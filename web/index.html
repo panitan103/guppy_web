@@ -49,40 +49,19 @@
             <div class="panel">
               <div class="panel-header">
                 <div>
-                  <h2>Keyboard Control</h2>
-                  <p>Hold deadman, then use movement keys. Space sends stop.</p>
+                  <h2>Telemetry</h2>
+                  <p>Primary MCU/ROS status from /guppy/telemetry.</p>
                 </div>
-                <span id="deadman-status" class="badge text-bg-danger">Disabled</span>
+                <span id="telemetry-age" class="badge text-bg-secondary">No data</span>
               </div>
-              <div class="row g-2 align-items-end">
-                <div class="col-sm-5">
-                  <label class="form-label" for="rosbridge-url">Rosbridge</label>
-                  <input id="rosbridge-url" class="form-control" value="ws://10.10.100.99:9090">
-                </div>
-                <div class="col-sm-3">
-                  <label class="form-label" for="command-scale">Scale</label>
-                  <input id="command-scale" class="form-control" type="number" value="1" min="0" max="1" step="0.05">
-                </div>
-                <div class="col-sm-4 d-grid">
-                  <button id="connect-ros" class="btn btn-primary">Connect ROS</button>
-                </div>
-              </div>
-              <div class="control-grid mt-3">
-                <div class="key">W<br><span>Surge +</span></div>
-                <div class="key">S<br><span>Surge -</span></div>
-                <div class="key">A<br><span>Sway -</span></div>
-                <div class="key">D<br><span>Sway +</span></div>
-                <div class="key">Q<br><span>Yaw +</span></div>
-                <div class="key">E<br><span>Yaw -</span></div>
-                <div class="key">R<br><span>Heave +</span></div>
-                <div class="key">F<br><span>Heave -</span></div>
-              </div>
-              <div class="d-flex gap-2 mt-3">
-                <button id="deadman-button" class="btn btn-outline-success flex-fill">Hold Deadman</button>
-                <button id="stop-button" class="btn btn-danger flex-fill">Stop</button>
-              </div>
-              <div class="form-text mt-2">
-                Keyboard deadman: hold Shift. Button deadman: hold mouse/touch on Hold Deadman.
+              <div class="telemetry-grid">
+                <div><span>Roll</span><strong id="telemetry-roll">--</strong></div>
+                <div><span>Pitch</span><strong id="telemetry-pitch">--</strong></div>
+                <div><span>Yaw</span><strong id="telemetry-yaw">--</strong></div>
+                <div><span>Depth</span><strong id="telemetry-depth">--</strong></div>
+                <div><span>Water</span><strong id="telemetry-water">--</strong></div>
+                <div><span>Voltage</span><strong id="telemetry-volt">--</strong></div>
+                <div><span>Current</span><strong id="telemetry-amp">--</strong></div>
               </div>
             </div>
           </div>
@@ -110,19 +89,40 @@
         <div class="panel">
           <div class="panel-header">
             <div>
-              <h2>Telemetry</h2>
-              <p>MCU/ROS status from /guppy/telemetry.</p>
+              <h2>Keyboard Control</h2>
+              <p>Secondary control path. Hold deadman, then use movement keys.</p>
             </div>
-            <span id="telemetry-age" class="badge text-bg-secondary">No data</span>
+            <span id="deadman-status" class="badge text-bg-danger">Disabled</span>
           </div>
-          <div class="telemetry-grid">
-            <div><span>Roll</span><strong id="telemetry-roll">--</strong></div>
-            <div><span>Pitch</span><strong id="telemetry-pitch">--</strong></div>
-            <div><span>Yaw</span><strong id="telemetry-yaw">--</strong></div>
-            <div><span>Depth</span><strong id="telemetry-depth">--</strong></div>
-            <div><span>Water</span><strong id="telemetry-water">--</strong></div>
-            <div><span>Voltage</span><strong id="telemetry-volt">--</strong></div>
-            <div><span>Current</span><strong id="telemetry-amp">--</strong></div>
+          <div class="row g-2 align-items-end">
+            <div class="col-sm-5">
+              <label class="form-label" for="rosbridge-url">Rosbridge</label>
+              <input id="rosbridge-url" class="form-control" value="ws://10.10.100.99:9090">
+            </div>
+            <div class="col-sm-3">
+              <label class="form-label" for="command-scale">Scale</label>
+              <input id="command-scale" class="form-control" type="number" value="1" min="0" max="1" step="0.05">
+            </div>
+            <div class="col-sm-4 d-grid">
+              <button id="connect-ros" class="btn btn-primary">Connect ROS</button>
+            </div>
+          </div>
+          <div class="control-grid mt-3">
+            <div class="key">W<br><span>Surge +</span></div>
+            <div class="key">S<br><span>Surge -</span></div>
+            <div class="key">A<br><span>Sway -</span></div>
+            <div class="key">D<br><span>Sway +</span></div>
+            <div class="key">Q<br><span>Yaw +</span></div>
+            <div class="key">E<br><span>Yaw -</span></div>
+            <div class="key">R<br><span>Heave +</span></div>
+            <div class="key">F<br><span>Heave -</span></div>
+          </div>
+          <div class="d-flex gap-2 mt-3">
+            <button id="deadman-button" class="btn btn-outline-success flex-fill">Hold Deadman</button>
+            <button id="stop-button" class="btn btn-danger flex-fill">Stop</button>
+          </div>
+          <div class="form-text mt-2">
+            Keyboard deadman: hold Shift. Button deadman: hold mouse/touch on Hold Deadman.
           </div>
         </div>
       </section>
