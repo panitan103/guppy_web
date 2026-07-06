@@ -66,6 +66,10 @@ Current panels:
 - Advanced raw command panel publishing `/guppy/cmd_raw`.
 - Stop button.
 
+The matching `guppy` driver clamps MCU motion command fields (`surge`, `sway`,
+`yaw`, `heave`) to `-400..400`. Browser `/guppy/cmd_vel` commands are
+normalized and the driver performs the final scale/clamp step.
+
 Keyboard default:
 
 - `W/S`: surge.

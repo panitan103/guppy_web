@@ -149,6 +149,19 @@
     </section>
 
     <section class="panel mb-3">
+      <h2>2026-07-06: MCU command range aligned</h2>
+      <p>
+        Updated the ROS driver to treat SG/SW/YW/HV as MCU motion command
+        fields with a -400..400 range. /guppy/cmd_vel now scales to 400 by
+        default, and raw commands are clamped before serial encoding.
+      </p>
+      <ul>
+        <li>Packet shape: AB CD SG SG SW SW YW YW HV HV S1 S2 O1 O2 O3 O4 CS.</li>
+        <li>Result: command encoding stays compatible with the Teensy firmware protocol.</li>
+      </ul>
+    </section>
+
+    <section class="panel mb-3">
       <h2>Next feedback loop</h2>
       <ul>
         <li>Install Flask, rosbridge_server, and web_video_server runtime dependencies.</li>
