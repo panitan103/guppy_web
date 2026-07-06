@@ -45,6 +45,16 @@
     </section>
 
     <section class="panel mb-3">
+      <h2>MCU Firmware Source</h2>
+      <p>
+        The low-level Teensy firmware lives at
+        <a href="https://github.com/panitan103/TEENSY_40_YOUYEETOO.git">panitan103/TEENSY_40_YOUYEETOO</a>.
+        It currently targets Teensy 4.0 with PCA9685, BNO055, and MS5837
+        connected. No servo is currently attached to the MCU.
+      </p>
+    </section>
+
+    <section class="panel mb-3">
       <h2>Message Meaning</h2>
       <ul>
         <li><strong>GuppyDriverTransmitted</strong>: ground/web/control to ROS to MCU command path.</li>
@@ -70,6 +80,7 @@
         <li>Config page with localStorage.</li>
         <li>Loadable controller mapping files.</li>
         <li>FlySky i6S support through browser-side controller handling.</li>
+        <li>Servo/camera actuator support after hardware and MCU firmware support exist.</li>
         <li>Richer telemetry history and test feedback capture.</li>
         <li>Future non-ROS high-performance bypass, outside this ROS-only session.</li>
       </ul>
