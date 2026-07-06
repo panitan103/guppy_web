@@ -89,6 +89,13 @@ body {
   margin: 0;
 }
 
+.subpanel-title {
+  color: var(--guppy-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
 .panel p {
   color: var(--guppy-muted);
   font-size: 0.9rem;

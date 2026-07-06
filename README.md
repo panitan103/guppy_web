@@ -61,9 +61,10 @@ Current panels:
 
 - Camera stream.
 - ROS connection status.
-- Telemetry from `/guppy/telemetry`.
+- Telemetry from `/Guppy_Received`.
 - Keyboard control publishing `/guppy/cmd_vel`.
-- Advanced raw command panel publishing `/guppy/cmd_raw`.
+- Advanced raw command panel publishing `/guppy/cmd_raw`, with the current
+  command readout grouped inside the same panel.
 - Stop button.
 
 The matching `guppy` driver clamps MCU motion command fields (`surge`, `sway`,

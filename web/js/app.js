@@ -45,7 +45,7 @@ class RosClient {
 
     this.telemetryTopic = new ROSLIB.Topic({
       ros: this.ros,
-      name: '/guppy/telemetry',
+      name: '/Guppy_Received',
       messageType: 'guppy_interface/msg/GuppyDriverReceived',
     });
 

@@ -55,7 +55,7 @@
               <div class="panel-header">
                 <div>
                   <h2>Telemetry</h2>
-                  <p>Primary MCU/ROS status from /guppy/telemetry.</p>
+                  <p>Primary MCU/ROS status from /Guppy_Received.</p>
                 </div>
                 <span id="telemetry-age" class="badge text-bg-secondary">No data</span>
               </div>
@@ -67,23 +67,6 @@
                 <div><span>Water</span><strong id="telemetry-water">--</strong></div>
                 <div><span>Voltage</span><strong id="telemetry-volt">--</strong></div>
                 <div><span>Current</span><strong id="telemetry-amp">--</strong></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12">
-            <div class="panel">
-              <div class="panel-header">
-                <div>
-                  <h2>Command</h2>
-                  <p>Current normalized command published to /guppy/cmd_vel.</p>
-                </div>
-              </div>
-              <div class="telemetry-grid">
-                <div><span>Surge</span><strong id="cmd-surge">0.00</strong></div>
-                <div><span>Sway</span><strong id="cmd-sway">0.00</strong></div>
-                <div><span>Heave</span><strong id="cmd-heave">0.00</strong></div>
-                <div><span>Yaw</span><strong id="cmd-yaw">0.00</strong></div>
               </div>
             </div>
           </div>
@@ -135,9 +118,19 @@
           <div class="panel-header">
             <div>
               <h2>Raw Command</h2>
-              <p>Advanced direct GuppyDriverTransmitted publisher.</p>
+              <p>Advanced direct GuppyDriverTransmitted publisher and command monitor.</p>
             </div>
           </div>
+          <div class="mb-3">
+            <h3 class="subpanel-title">Current Command</h3>
+            <div class="telemetry-grid">
+              <div><span>Surge</span><strong id="cmd-surge">0.00</strong></div>
+              <div><span>Sway</span><strong id="cmd-sway">0.00</strong></div>
+              <div><span>Heave</span><strong id="cmd-heave">0.00</strong></div>
+              <div><span>Yaw</span><strong id="cmd-yaw">0.00</strong></div>
+            </div>
+          </div>
+          <h3 class="subpanel-title">Publish Raw</h3>
           <div class="raw-grid">
             <input class="form-control" id="raw-surge" type="number" placeholder="surge" value="0">
             <input class="form-control" id="raw-sway" type="number" placeholder="sway" value="0">
