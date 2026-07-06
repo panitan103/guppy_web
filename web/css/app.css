@@ -1,0 +1,113 @@
+:root {
+  --guppy-ink: #1f2933;
+  --guppy-line: #d8dee4;
+  --guppy-panel: #ffffff;
+  --guppy-bg: #f4f7f9;
+  --guppy-accent: #166b8f;
+}
+
+body {
+  background: var(--guppy-bg);
+  color: var(--guppy-ink);
+}
+
+.panel {
+  background: var(--guppy-panel);
+  border: 1px solid var(--guppy-line);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.panel-header {
+  align-items: start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.panel h1,
+.panel h2 {
+  font-size: 1.1rem;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.panel p {
+  color: #5b6773;
+  font-size: 0.9rem;
+  margin: 4px 0 0;
+}
+
+.camera-frame {
+  align-items: center;
+  aspect-ratio: 16 / 9;
+  background: #111820;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.camera-frame img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.compact-input {
+  max-width: 96px;
+}
+
+.control-grid,
+.telemetry-grid,
+.raw-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.control-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.telemetry-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.raw-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.key,
+.telemetry-grid div {
+  border: 1px solid var(--guppy-line);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.key {
+  font-weight: 700;
+  text-align: center;
+}
+
+.key span,
+.telemetry-grid span {
+  color: #5b6773;
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.telemetry-grid strong {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .control-grid,
+  .telemetry-grid,
+  .raw-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
