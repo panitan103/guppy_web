@@ -68,6 +68,19 @@
     </section>
 
     <section class="panel mb-3">
+      <h2>2026-07-06: Full workspace verification</h2>
+      <p>
+        Full workspace verification completed after the first implementation pass.
+      </p>
+      <ul>
+        <li>Test: colcon build --packages-select guppy_interface guppy guppy_web</li>
+        <li>Test: colcon test --packages-select guppy_interface guppy guppy_web</li>
+        <li>Test: colcon test-result --verbose</li>
+        <li>Result: 15 tests, 0 errors, 0 failures, 2 skipped</li>
+      </ul>
+    </section>
+
+    <section class="panel mb-3">
       <h2>Next feedback loop</h2>
       <ul>
         <li>Install Flask, rosbridge_server, and web_video_server runtime dependencies.</li>
