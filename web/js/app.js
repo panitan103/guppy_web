@@ -34,19 +34,19 @@ class RosClient {
     this.cmdVelTopic = new ROSLIB.Topic({
       ros: this.ros,
       name: '/guppy/cmd_vel',
-      messageType: 'geometry_msgs/Twist',
+      messageType: 'geometry_msgs/msg/Twist',
     });
 
     this.rawTopic = new ROSLIB.Topic({
       ros: this.ros,
       name: '/guppy/cmd_raw',
-      messageType: 'guppy_interface/GuppyDriverTransmitted',
+      messageType: 'guppy_interface/msg/GuppyDriverTransmitted',
     });
 
     this.telemetryTopic = new ROSLIB.Topic({
       ros: this.ros,
       name: '/guppy/telemetry',
-      messageType: 'guppy_interface/GuppyDriverReceived',
+      messageType: 'guppy_interface/msg/GuppyDriverReceived',
     });
 
     if (this.telemetryHandler) {
