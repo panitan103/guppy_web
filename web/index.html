@@ -9,10 +9,15 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg border-bottom app-navbar">
-    <div class="container-fluid">
+    <div class="container-fluid gap-3">
       <span class="navbar-brand fw-semibold">Guppy Ground Control</span>
-      <div class="d-flex align-items-center gap-2">
+      <div class="connection-bar">
+        <label class="visually-hidden" for="rosbridge-url">Rosbridge</label>
+        <input id="rosbridge-url" class="form-control form-control-sm" value="ws://10.10.100.99:9090">
+        <button id="connect-ros" class="btn btn-primary btn-sm" type="button">Connect ROS</button>
         <span id="ros-status" class="badge text-bg-secondary">ROS disconnected</span>
+      </div>
+      <div class="d-flex align-items-center gap-2">
         <button id="theme-toggle" class="btn btn-outline-secondary btn-sm" type="button">Light Mode</button>
         <a class="btn btn-outline-secondary btn-sm" href="/dev-plan.html">Dev Plan</a>
         <a class="btn btn-outline-secondary btn-sm" href="/dev-log.html">Dev Log</a>
@@ -95,16 +100,14 @@
             <span id="deadman-status" class="badge text-bg-danger">Disabled</span>
           </div>
           <div class="row g-2 align-items-end">
-            <div class="col-sm-5">
-              <label class="form-label" for="rosbridge-url">Rosbridge</label>
-              <input id="rosbridge-url" class="form-control" value="ws://10.10.100.99:9090">
-            </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4 col-lg-3">
               <label class="form-label" for="command-scale">Scale</label>
               <input id="command-scale" class="form-control" type="number" value="1" min="0" max="1" step="0.05">
             </div>
-            <div class="col-sm-4 d-grid">
-              <button id="connect-ros" class="btn btn-primary">Connect ROS</button>
+            <div class="col-sm-8 col-lg-9">
+              <div class="form-text">
+                Movement keys publish only while deadman is active. ROS connection is controlled from the navbar.
+              </div>
             </div>
           </div>
           <div class="control-grid mt-3">
