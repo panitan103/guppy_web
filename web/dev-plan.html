@@ -62,7 +62,7 @@
       <ul>
         <li><strong>GuppyDriverTransmitted</strong>: ground/web/control to ROS to MCU command path.</li>
         <li><strong>GuppyDriverReceived</strong>: MCU/ROS to ground/web telemetry path.</li>
-        <li><strong>Motion command range</strong>: SG/SW/YW/HV are clamped to -400..400 before serial transmit.</li>
+        <li><strong>Motion command range</strong>: SG/SW/YW/HV are RC-style -400..400 command inputs before MCU motor mixing and PCA9685 mapping.</li>
       </ul>
     </section>
 

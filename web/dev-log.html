@@ -151,9 +151,11 @@
     <section class="panel mb-3">
       <h2>2026-07-06: MCU command range aligned</h2>
       <p>
-        Updated the ROS driver to treat SG/SW/YW/HV as MCU motion command
-        fields with a -400..400 range. /guppy/cmd_vel now scales to 400 by
-        default, and raw commands are clamped before serial encoding.
+        Updated the ROS driver to treat SG/SW/YW/HV as RC-style MCU motion
+        command inputs with a -400..400 range. /guppy/cmd_vel now scales to
+        400 by default, and raw commands are clamped before serial encoding.
+        The MCU firmware remains responsible for motor mixing, pulse-width
+        calculation, and PCA9685 12-bit output mapping.
       </p>
       <ul>
         <li>Packet shape: AB CD SG SG SW SW YW YW HV HV S1 S2 O1 O2 O3 O4 CS.</li>

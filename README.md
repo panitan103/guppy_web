@@ -67,8 +67,10 @@ Current panels:
 - Stop button.
 
 The matching `guppy` driver clamps MCU motion command fields (`surge`, `sway`,
-`yaw`, `heave`) to `-400..400`. Browser `/guppy/cmd_vel` commands are
-normalized and the driver performs the final scale/clamp step.
+`yaw`, `heave`) to the RC-style `-400..400` range expected by the Teensy
+firmware. Browser `/guppy/cmd_vel` commands are normalized and the driver
+performs the final scale/clamp step. The MCU then owns motor mixing, pulse-width
+calculation, and PCA9685 12-bit output mapping.
 
 Keyboard default:
 
