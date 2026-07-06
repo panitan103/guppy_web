@@ -11,7 +11,10 @@
   <main class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h1 class="h3 mb-0">Guppy Dev Log</h1>
-      <a class="btn btn-outline-secondary btn-sm" href="/">Dashboard</a>
+      <div class="d-flex gap-2">
+        <button id="theme-toggle" class="btn btn-outline-secondary btn-sm" type="button">Light Mode</button>
+        <a class="btn btn-outline-secondary btn-sm" href="/">Dashboard</a>
+      </div>
     </div>
 
     <section class="panel mb-3">
@@ -108,6 +111,18 @@
     </section>
 
     <section class="panel mb-3">
+      <h2>2026-07-06: Milestones and theme control</h2>
+      <p>
+        Added a milestone board to the hosted dev plan and made dark mode the
+        default visual mode with a localStorage-backed light/dark switch.
+      </p>
+      <ul>
+        <li>Result: dev plan now shows done/current/next/future milestones.</li>
+        <li>Result: dashboard and dev docs default to dark mode.</li>
+      </ul>
+    </section>
+
+    <section class="panel mb-3">
       <h2>Next feedback loop</h2>
       <ul>
         <li>Install Flask, rosbridge_server, and web_video_server runtime dependencies.</li>
@@ -117,5 +132,6 @@
       </ul>
     </section>
   </main>
+  <script src="/js/theme.js"></script>
 </body>
 </html>

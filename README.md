@@ -54,6 +54,8 @@ Useful launch parameters:
 ## Web UI MVP
 
 The dashboard is Bootstrap-based, clean, informative, and operational.
+Dark mode is the default. The dashboard and hosted dev pages include a
+light/dark switch that stores the preference in browser localStorage.
 
 Current panels:
 

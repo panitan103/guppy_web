@@ -1,7 +1,21 @@
 :root {
+  color-scheme: dark;
+  --guppy-ink: #e6edf3;
+  --guppy-muted: #9ca9b5;
+  --guppy-line: #2f3b47;
+  --guppy-panel: #141c24;
+  --guppy-panel-soft: #1a2530;
+  --guppy-bg: #0b1117;
+  --guppy-accent: #4db7df;
+}
+
+:root[data-bs-theme="light"] {
+  color-scheme: light;
   --guppy-ink: #1f2933;
+  --guppy-muted: #5b6773;
   --guppy-line: #d8dee4;
   --guppy-panel: #ffffff;
+  --guppy-panel-soft: #f8fafc;
   --guppy-bg: #f4f7f9;
   --guppy-accent: #166b8f;
 }
@@ -9,6 +23,39 @@
 body {
   background: var(--guppy-bg);
   color: var(--guppy-ink);
+}
+
+.app-navbar {
+  background: var(--guppy-panel);
+}
+
+.navbar-brand,
+.form-label,
+.input-group-text {
+  color: var(--guppy-ink);
+}
+
+.form-control,
+.input-group-text {
+  background: var(--guppy-panel-soft);
+  border-color: var(--guppy-line);
+  color: var(--guppy-ink);
+}
+
+.form-control:focus {
+  background: var(--guppy-panel-soft);
+  border-color: var(--guppy-accent);
+  box-shadow: 0 0 0 0.2rem rgb(77 183 223 / 20%);
+  color: var(--guppy-ink);
+}
+
+.form-text,
+.panel a {
+  color: var(--guppy-muted);
+}
+
+.panel a:hover {
+  color: var(--guppy-accent);
 }
 
 .panel {
@@ -34,7 +81,7 @@ body {
 }
 
 .panel p {
-  color: #5b6773;
+  color: var(--guppy-muted);
   font-size: 0.9rem;
   margin: 4px 0 0;
 }
@@ -47,6 +94,28 @@ body {
   display: flex;
   justify-content: center;
   overflow: hidden;
+}
+
+.milestone-list {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.milestone {
+  background: var(--guppy-panel-soft);
+  border: 1px solid var(--guppy-line);
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.milestone h3 {
+  font-size: 1rem;
+  margin: 8px 0 0;
+}
+
+.milestone.current {
+  border-color: #ffc107;
 }
 
 .camera-frame img {
@@ -92,7 +161,7 @@ body {
 
 .key span,
 .telemetry-grid span {
-  color: #5b6773;
+  color: var(--guppy-muted);
   display: block;
   font-size: 0.78rem;
   font-weight: 500;
@@ -107,7 +176,14 @@ body {
 @media (max-width: 768px) {
   .control-grid,
   .telemetry-grid,
-  .raw-grid {
+  .raw-grid,
+  .milestone-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .milestone-list {
+    grid-template-columns: 1fr;
   }
 }

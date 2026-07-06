@@ -11,7 +11,10 @@
   <main class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h1 class="h3 mb-0">Guppy Dev Plan</h1>
-      <a class="btn btn-outline-secondary btn-sm" href="/">Dashboard</a>
+      <div class="d-flex gap-2">
+        <button id="theme-toggle" class="btn btn-outline-secondary btn-sm" type="button">Light Mode</button>
+        <a class="btn btn-outline-secondary btn-sm" href="/">Dashboard</a>
+      </div>
     </div>
 
     <section class="panel mb-3">
@@ -63,15 +66,49 @@
     </section>
 
     <section class="panel mb-3">
-      <h2>Current MVP</h2>
-      <ul>
-        <li>Keep legacy serial behavior working.</li>
-        <li>Add /guppy/cmd_vel and /guppy/cmd_raw command paths.</li>
-        <li>Add /guppy/telemetry alias.</li>
-        <li>Host a clean Bootstrap operator dashboard.</li>
-        <li>Use keyboard control first, with deadman safety.</li>
-        <li>Prepare browser-side controller support for later FlySky/gamepad work.</li>
-      </ul>
+      <h2>Milestones</h2>
+      <div class="milestone-list">
+        <article class="milestone done">
+          <span class="badge text-bg-success">Done</span>
+          <h3>Foundation</h3>
+          <p>Fix package validation, preserve serial behavior, and add package-level documentation.</p>
+        </article>
+        <article class="milestone done">
+          <span class="badge text-bg-success">Done</span>
+          <h3>ROS Command Integration</h3>
+          <p>Add /guppy/cmd_vel, /guppy/cmd_raw, /guppy/telemetry, OOP driver structure, and timeout stop behavior.</p>
+        </article>
+        <article class="milestone done">
+          <span class="badge text-bg-success">Done</span>
+          <h3>Web Package MVP</h3>
+          <p>Create guppy_web, Flask static hosting, Bootstrap dashboard, rosbridge launch, video launch, and hosted docs.</p>
+        </article>
+        <article class="milestone done">
+          <span class="badge text-bg-success">Done</span>
+          <h3>Hardware Context</h3>
+          <p>Document Teensy firmware source, PCA9685/BNO055/MS5837 support, and no current servo attachment.</p>
+        </article>
+        <article class="milestone current">
+          <span class="badge text-bg-warning">Current</span>
+          <h3>Operator Feedback Loop</h3>
+          <p>Install runtime dependencies, launch the web stack, test real telemetry/control/video, and record feedback.</p>
+        </article>
+        <article class="milestone next">
+          <span class="badge text-bg-secondary">Next</span>
+          <h3>Control Configuration</h3>
+          <p>Add localStorage-backed settings for keyboard mappings, rosbridge URL, camera topic, and command scale.</p>
+        </article>
+        <article class="milestone future">
+          <span class="badge text-bg-secondary">Future</span>
+          <h3>Controller Expansion</h3>
+          <p>Add FlySky i6S/gamepad browser-side support after keyboard control is tested on the real ROV.</p>
+        </article>
+        <article class="milestone future">
+          <span class="badge text-bg-secondary">Future</span>
+          <h3>Servo/Camera Actuator</h3>
+          <p>Add servo control only after matching hardware and MCU firmware support exist.</p>
+        </article>
+      </div>
     </section>
 
     <section class="panel mb-3">
@@ -86,5 +123,6 @@
       </ul>
     </section>
   </main>
+  <script src="/js/theme.js"></script>
 </body>
 </html>
