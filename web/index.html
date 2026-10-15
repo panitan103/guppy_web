@@ -70,6 +70,31 @@
               </div>
             </div>
           </div>
+
+          <div class="col-12">
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <h2>Control</h2>
+                  <p>Last command sent to the MCU: /guppy/cmd_raw (MCU units) or /guppy/cmd_vel (normalized -1..1).</p>
+                </div>
+                <span id="control-source" class="badge text-bg-secondary">no source</span>
+                <span id="control-age" class="badge text-bg-secondary">No data</span>
+              </div>
+              <div class="telemetry-grid">
+                <div><span>Surge</span><strong id="control-surge">--</strong></div>
+                <div><span>Sway</span><strong id="control-sway">--</strong></div>
+                <div><span>Yaw</span><strong id="control-yaw">--</strong></div>
+                <div><span>Heave</span><strong id="control-heave">--</strong></div>
+                <div><span>S1</span><strong id="control-s1">--</strong></div>
+                <div><span>S2</span><strong id="control-s2">--</strong></div>
+                <div><span>O1</span><strong id="control-o1">--</strong></div>
+                <div><span>O2</span><strong id="control-o2">--</strong></div>
+                <div><span>O3</span><strong id="control-o3">--</strong></div>
+                <div><span>O4</span><strong id="control-o4">--</strong></div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -6,6 +6,8 @@ class RosClient {
     this.rawTopic = null;
     this.telemetryTopic = null;
     this.telemetryHandler = null;
+    this.controlHandler = null;
+    this.controlVelocityHandler = null;
   }
 
   connect(url) {
@@ -49,8 +51,18 @@ class RosClient {
       messageType: 'guppy_interface/msg/GuppyDriverReceived',
     });
 
+    this.controlTopic = this.rawTopic;
+
     if (this.telemetryHandler) {
       this.telemetryTopic.subscribe(this.telemetryHandler);
+    }
+
+    if (this.controlHandler) {
+      this.controlTopic.subscribe(this.controlHandler);
+    }
+
+    if (this.controlVelocityHandler) {
+      this.cmdVelTopic.subscribe(this.controlVelocityHandler);
     }
   }
 
@@ -58,6 +70,20 @@ class RosClient {
     this.telemetryHandler = callback;
     if (this.telemetryTopic) {
       this.telemetryTopic.subscribe(callback);
+    }
+  }
+
+  onControl(callback) {
+    this.controlHandler = callback;
+    if (this.controlTopic) {
+      this.controlTopic.subscribe(callback);
+    }
+  }
+
+  onControlVelocity(callback) {
+    this.controlVelocityHandler = callback;
+    if (this.cmdVelTopic) {
+      this.cmdVelTopic.subscribe(callback);
     }
   }
 
@@ -258,6 +284,67 @@ class TelemetryView {
   }
 }
 
+class ControlView {
+  constructor() {
+    this.lastControlTime = null;
+    window.setInterval(() => this.renderAge(), 500);
+  }
+
+  update(message) {
+    this.lastControlTime = Date.now();
+    this.setSource('cmd_raw');
+    this.setValue('surge', message.surge);
+    this.setValue('sway', message.sway);
+    this.setValue('yaw', message.yaw);
+    this.setValue('heave', message.heave);
+    this.setValue('s1', message.s1);
+    this.setValue('s2', message.s2);
+    this.setValue('o1', message.o1);
+    this.setValue('o2', message.o2);
+    this.setValue('o3', message.o3);
+    this.setValue('o4', message.o4);
+    this.renderAge();
+  }
+
+  updateVelocity(twist) {
+    // /guppy/cmd_vel arrives normalized (-1..1); the driver scales it to MCU units.
+    this.lastControlTime = Date.now();
+    this.setSource('cmd_vel');
+    this.setValue('surge', formatAxis(twist.linear.x));
+    this.setValue('sway', formatAxis(twist.linear.y));
+    this.setValue('heave', formatAxis(twist.linear.z));
+    this.setValue('yaw', formatAxis(twist.angular.z));
+    this.renderAge();
+  }
+
+  setSource(name) {
+    const element = document.getElementById('control-source');
+    element.textContent = name;
+    element.className = name === 'cmd_raw' ? 'badge text-bg-primary' : 'badge text-bg-info';
+  }
+
+  setValue(name, value) {
+    document.getElementById(`control-${name}`).textContent = value;
+  }
+
+  renderAge() {
+    const element = document.getElementById('control-age');
+    if (!this.lastControlTime) {
+      element.className = 'badge text-bg-secondary';
+      element.textContent = 'No data';
+      return;
+    }
+
+    const age = (Date.now() - this.lastControlTime) / 1000;
+    element.className = age < 1.5 ? 'badge text-bg-success' : 'badge text-bg-warning';
+    element.textContent = `${age.toFixed(1)}s old`;
+  }
+}
+
+function formatAxis(value) {
+  return Number(value).toFixed(2);
+}
+
 function readRawCommand() {
   const field = (name) => Number.parseInt(document.getElementById(`raw-${name}`).value, 10) || 0;
   return {
@@ -284,9 +371,12 @@ function refreshCamera() {
 window.addEventListener('DOMContentLoaded', () => {
   const rosClient = new RosClient(document.getElementById('ros-status'));
   const telemetryView = new TelemetryView();
+  const controlView = new ControlView();
   new KeyboardController(rosClient);
 
   rosClient.onTelemetry((message) => telemetryView.update(message));
+  rosClient.onControl((message) => controlView.update(message));
+  rosClient.onControlVelocity((message) => controlView.updateVelocity(message));
 
   document.getElementById('connect-ros').addEventListener('click', () => {
     rosClient.connect(document.getElementById('rosbridge-url').value);
